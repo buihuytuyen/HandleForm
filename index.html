@@ -39,6 +39,40 @@
                 <span class="form-message"></span>
             </div>
 
+            <div class="form-group">
+                <label for="avatar" class="form-label">Ảnh đại diện</label>
+                <input type="file" id="avatar" name="avatar" class="form-control">
+                <span class="form-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="province" class="form-label">Tỉnh/TP</label>
+                <select  id="province" name="province"  class="form-control">
+                    <option value="">-- Chọn Tỉnh/TP --</option>
+                    <option value="hni">Hà Nội</option>
+                    <option value="hpg">Hài Phòng</option>
+                    <option value="hcm">Hồ Chí Minh</option>
+                </select>
+                <span class="form-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="gender" class="form-label">Giới tính</label>
+                <div>
+                    <input name="gender" class="form-control" type="checkbox" value="male">
+                    Nam
+                </div>
+                <div>
+                    <input name="gender" class="form-control" type="checkbox" value="female">
+                    Nữ
+                </div>
+                <div>
+                    <input name="gender" class="form-control" type="checkbox" value="other">
+                    Khác
+                </div>
+                <span class="form-message"></span>
+            </div>
+
             <button class="form-submit">Đăng ký</button>
         </form>
     </div>
@@ -48,12 +82,17 @@
 
         Validator({
             form: '#form-1',
+            formGroupSelector: '.form-group',
             errorSelector: '.form-message',
             rules: [
                 Validator.isRequired('#fullname'),
                 Validator.isRequired('#email'),
                 Validator.isEmail('#email'),
                 Validator.minLength('#password',6),
+                Validator.isRequired('#fullname'),
+                Validator.isRequired('#avatar'),
+                Validator.isRequired('#province'),
+                Validator.isRequired('input[name="gender"]'),
                 Validator.isRequired('#password_confirmation'),
                 Validator.isConfirmed('#password_confirmation', function () {
                     return document.querySelector('#form-1 #password').value
